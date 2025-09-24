@@ -1,0 +1,22 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>Create Group</h2>
+      <%= form_with model: @group, local: true, html: { multipart: true } do |f| %>
+        <div class="mb-3">
+          <%= f.label :name, "グループ名" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :introduction, "紹介文" %>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :image, "グループ画像" %>
+          <%= f.file_field :image, class: "form-control-file group_image", accept: 'image/*' %>
+        </div>
+        <%= f.submit "Create Group", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
