@@ -15,6 +15,13 @@ Rails.application.routes.draw do
       get "followers" => "relationships#followers", as: "followers"
   end
 
+  resources :groups do
+    member do
+      post :join
+      delete :leave
+    end
+  end
+
   resources :groups, only: [:new, :create, :index, :show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

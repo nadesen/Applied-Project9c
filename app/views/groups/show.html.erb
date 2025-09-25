@@ -10,6 +10,15 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Group Detail</h2>
       <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th>メンバー</th>
+            <th></th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
             <td>
@@ -22,8 +31,19 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
+              <% @group.all_members.each do |member| %>
+                <div><%= member.name %></div>
+              <% end %>
+            </td>
+            <td>
               <% if @group.owner == current_user %>
                 <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+              <% else %>
+                <% if @group.all_members.include?(current_user) %>
+                  <%= button_to 'Leave this group', leave_group_path(@group), method: :delete, class: "btn btn-danger" %>
+                <% else %>
+                  <%= button_to 'Join this group', join_group_path(@group), method: :post, class: "btn btn-primary" %>
+                <% end %>
               <% end %>
             </td>
           </tr>

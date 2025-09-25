@@ -16,6 +16,7 @@
             <th></th>
             <th>グループ名</th>
             <th>紹介文</th>
+            <th>メンバー数</th>
             <th></th>
           </tr>
         </thead>
@@ -31,6 +32,7 @@
               </td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
+              <td><%= (group.members.to_a + [group.owner]).uniq.count %></td>
               <td>
                 <% if group.owner == current_user %>
                   <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>

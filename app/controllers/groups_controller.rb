@@ -41,6 +41,22 @@ class GroupsController < ApplicationController
     end
   end
 
+  def join
+    @group = Group.find(params[:id])
+    unless @group.members.include?(current_user)
+      @group.members << current_user
+    end
+    redirect_to group_path(@group)
+  end
+
+  def leave
+    @group = Group.find(params[:id])
+    if @group.members.include?(current_user)
+      @group.members.delete(current_user)
+    end
+    redirect_to group_path(@group)
+  end
+
   private
 
   def group_params
