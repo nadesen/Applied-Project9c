@@ -1,0 +1,18 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>Event Mail</h2>
+      <%= form_with url: send_notice_event_group_path(@group), method: :post, local: true do %>
+        <div class="mb-3">
+          <%= label_tag :subject, "Title" %>
+          <%= text_field_tag :subject, nil, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= label_tag :body, "Content" %>
+          <%= text_area_tag :body, nil, class: "form-control", rows: 6 %>
+        </div>
+        <%= submit_tag "送信", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

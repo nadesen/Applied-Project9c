@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     member do
       post :join
       delete :leave
+      get :notice_event
+      post :send_notice_event
     end
   end
 

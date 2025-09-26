@@ -1,0 +1,16 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>送信が完了しました</h2>
+      <div class="mb-3">
+        <strong>Title:</strong>
+        <div class="form-control mb-2" readonly><%= subject %></div>
+      </div>
+      <div class="mb-3">
+        <strong>Content:</strong>
+        <div class="form-control" style="white-space: pre-wrap;" readonly><%= body %></div>
+      </div>
+      <%= link_to "グループ詳細へ戻る", group_path(@group), class: "btn btn-secondary mt-3" %>
+    </div>
+  </div>
+</div>

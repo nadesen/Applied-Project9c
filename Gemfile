@@ -61,3 +61,5 @@ gem 'net-smtp'
 group :test do
   gem 'capybara-screenshot'
 end
+
+gem 'dotenv-rails'

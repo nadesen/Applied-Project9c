@@ -57,6 +57,22 @@ class GroupsController < ApplicationController
     redirect_to group_path(@group)
   end
 
+  def notice_event
+    @group = Group.find(params[:id])
+    redirect_to group_path(@group) unless @group.owner == current_user
+  end
+
+  def send_notice_event
+    @group = Group.find(params[:id])
+    redirect_to group_path(@group) unless @group.owner == current_user
+
+    subject = params[:subject]
+    body = params[:body]
+    GroupMailer.notice_event(@group, subject, body).deliver_now
+
+    render :notice_event_done, locals: { subject: subject, body: body }
+  end
+
   private
 
   def group_params

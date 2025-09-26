@@ -17,6 +17,7 @@
             <th>紹介文</th>
             <th>メンバー</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +45,11 @@
                 <% else %>
                   <%= button_to 'Join this group', join_group_path(@group), method: :post, class: "btn btn-primary" %>
                 <% end %>
+              <% end %>
+            </td>
+            <td>
+              <% if @group.owner == current_user %>
+                <%= link_to "Notice an Event", notice_event_group_path(@group), class: "btn btn-warning" %>
               <% end %>
             </td>
           </tr>
